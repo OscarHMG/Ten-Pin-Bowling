@@ -10,5 +10,7 @@ package com.oscarhmg.jobsity.ten_pin_bowling;
  * @author Usuario
  */
 public class Application {
-    
+    public static void main(String args[]){
+        System.out.println("Hello World!");
+    }
 }
