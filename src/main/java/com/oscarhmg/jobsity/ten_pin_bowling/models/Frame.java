@@ -5,10 +5,62 @@
  */
 package com.oscarhmg.jobsity.ten_pin_bowling.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author OscarHMG
  */
 public class Frame {
+    private int scorePoints;
+    
+    //Max : 3 rolls at 10th frame. List is more easier to handle.
+    private ArrayList<Roll> rolls;
+    
+    private boolean spare;
+    private boolean strike;
+
+    
+    public Frame(){
+        this.rolls = new ArrayList<>();
+    }
+    
+    public Frame(ArrayList<Roll> rolls){
+        this.rolls = rolls;
+    }
+    
+    
+    
+    public ArrayList<Roll> getRolls() {
+        return rolls;
+    }
+
+
+    public boolean isSpare() {
+        return spare;
+    }
+
+    public void setSpare(boolean spare) {
+        this.spare = spare;
+    }
+
+    public boolean isStrike() {
+        return strike;
+    }
+
+    public void setStrike(boolean strike) {
+        this.strike = strike;
+    }
+
+    public int getScorePoints() {
+        return scorePoints;
+    }
+
+    public void setScorePoints(int scorePoints) {
+        this.scorePoints = scorePoints;
+    }
+    
+    
+    
     
 }

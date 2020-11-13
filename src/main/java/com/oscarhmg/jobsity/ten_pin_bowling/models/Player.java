@@ -5,10 +5,38 @@
  */
 package com.oscarhmg.jobsity.ten_pin_bowling.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author OscarHMG
  */
 public class Player {
+    private String playerName;
+    private ArrayList<Frame> frames;
+
+    public Player(String playerName) {
+        this.playerName = playerName;
+        this.frames = new ArrayList<>();
+    }
+
+    
+    
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public ArrayList<Frame> getFrames() {
+        return frames;
+    }
+
+    public void setFrames(ArrayList<Frame> frames) {
+        this.frames = frames;
+    }
+    
     
 }
