@@ -29,12 +29,13 @@ public class FrameServiceImp implements FrameService{
             Player player = new Player(playerIt);
             ArrayList<Roll> rollChances = rolls.get(playerIt);
             boolean skipRoll = false;
+            boolean lastFrame = false;
             ArrayList<Frame> framesByPlayer = new ArrayList<>();
             for(int counter = 0; counter < rollChances.size(); counter++){
                 
                 
                 
-                if(skipRoll){
+                if(skipRoll || lastFrame){
                     //skip and go next
                     skipRoll = false;
                     continue;
@@ -51,14 +52,28 @@ public class FrameServiceImp implements FrameService{
                 
                 //////this need to be refactor.
                 
-                //STRIKE CASE: Strike at R1 only! (At last frame ???? chekc later)
+                //STRIKE CASE:
+                //2 Cases: 
+                //Normal Frame: Nothing special
+                //LastFrame: Consider 3 Rolls here.
                 if(R1.getPinsDown() == 10){
-                    //PENDING!???????
-                    newFrame.setSpare(false);
-                    newFrame.setStrike(true);
-                    newFrame.getRolls().add(R1);
-                    int score =R1.getPinsDown() + R2.getPinsDown() + ((R3 != null)? R3.getPinsDown() : 0);
-                    newFrame.setScorePoints(score);
+                    if(framesByPlayer.size() == 9){
+                        newFrame.setSpare(false);
+                        newFrame.setStrike(true);
+                        newFrame.getRolls().add(R1);
+                        newFrame.getRolls().add(R2);
+                        newFrame.getRolls().add(R3);
+                        newFrame.setScorePoints(R1.getPinsDown() + R2.getPinsDown() + R3.getPinsDown());
+                    }else{
+                        //PENDING!???????
+                        newFrame.setSpare(false);
+                        newFrame.setStrike(true);
+                        newFrame.getRolls().add(R1);
+                        int score =R1.getPinsDown() + R2.getPinsDown() + ((R3 != null)? R3.getPinsDown() : 0);
+                        newFrame.setScorePoints(score);
+                    }
+                    
+                    
                     skipRoll = false;
                 }else{
                     //Spare Case: only with 2 rolls
@@ -81,9 +96,11 @@ public class FrameServiceImp implements FrameService{
                 }
                 //counter++;
                 framesByPlayer.add(newFrame);
+                lastFrame = framesByPlayer.size() == 10;
             }
             player.setFrames(framesByPlayer);
             players.add(player);
+            
         }
         
         
