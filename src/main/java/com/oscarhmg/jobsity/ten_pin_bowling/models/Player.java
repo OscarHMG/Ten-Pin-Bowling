@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Player {
     private String playerName;
     private ArrayList<Frame> frames;
+    private int globalScore;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -36,6 +37,23 @@ public class Player {
 
     public void setFrames(ArrayList<Frame> frames) {
         this.frames = frames;
+    }
+
+    public int getGlobalScore() {
+        return globalScore;
+    }
+
+    public void setGlobalScore(int globalScore) {
+        this.globalScore = globalScore;
+    }
+    
+    public void calculateGlobalScore(){
+        int acum = 0;
+        for(Frame it : this.frames){
+            acum = acum + it.getScorePoints();
+        }
+        
+        this.globalScore = acum;
     }
     
     

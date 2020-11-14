@@ -32,9 +32,6 @@ public class FrameServiceImp implements FrameService{
             boolean lastFrame = false;
             ArrayList<Frame> framesByPlayer = new ArrayList<>();
             for(int counter = 0; counter < rollChances.size(); counter++){
-                
-                
-                
                 if(skipRoll || lastFrame){
                     //skip and go next
                     skipRoll = false;
@@ -94,31 +91,15 @@ public class FrameServiceImp implements FrameService{
                         newFrame.setScorePoints(R1.getPinsDown() + R2.getPinsDown());
                     }
                 }
-                //counter++;
                 framesByPlayer.add(newFrame);
                 lastFrame = framesByPlayer.size() == 10;
             }
             player.setFrames(framesByPlayer);
+            //When you load all the frames, calculate the score.
+            player.calculateGlobalScore();
             players.add(player);
             
         }
-        
-        
         return players;
-        
     }
-    
-//    Frame frame;
-//        if (rollValidator.isStrike(currentRoll)) {
-//            frame = createStrikeFrame(currentRoll, nextRoll, overNextRoll, resultSize);
-//        } else {
-//            if (rollValidator.isSpare(currentRoll, nextRoll)) {
-//                frame = createSpareFrame(currentRoll, nextRoll, overNextRoll);
-//            } else {
-//                frame = createStandardFrame(currentRoll, nextRoll);
-//            }
-//        }
-//        return frame;
-    
-    
 }

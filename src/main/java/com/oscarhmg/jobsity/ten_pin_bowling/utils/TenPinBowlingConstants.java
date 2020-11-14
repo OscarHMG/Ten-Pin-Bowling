@@ -9,6 +9,13 @@ package com.oscarhmg.jobsity.ten_pin_bowling.utils;
  *
  * @author OscarHMG
  */
-public class Constants {
+public final class TenPinBowlingConstants {
+    public static final String STRIKE = "X";
+    public static final String SPARE = "/";
+    public static final int MAX_FRAMES = 10;
     
+    
+    private TenPinBowlingConstants(){
+        
+    }
 }
