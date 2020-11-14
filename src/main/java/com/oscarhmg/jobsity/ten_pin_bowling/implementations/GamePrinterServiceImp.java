@@ -8,6 +8,7 @@ package com.oscarhmg.jobsity.ten_pin_bowling.implementations;
 import com.oscarhmg.jobsity.ten_pin_bowling.models.Frame;
 import com.oscarhmg.jobsity.ten_pin_bowling.models.Game;
 import com.oscarhmg.jobsity.ten_pin_bowling.models.Player;
+import com.oscarhmg.jobsity.ten_pin_bowling.models.Roll;
 import com.oscarhmg.jobsity.ten_pin_bowling.services.FramePrinterService;
 import com.oscarhmg.jobsity.ten_pin_bowling.services.GamePrinterService;
 import java.util.ArrayList;
@@ -36,19 +37,46 @@ public class GamePrinterServiceImp implements GamePrinterService{
     @Override
     public String printFrames(ArrayList<Frame> frames) {
         String pinfalls = "Pinfalls\t";
-        for(Frame it : frames){
-            if(it.isSpare()){
-                pinfalls = pinfalls + framePrinterService.printFrameWithSpare(it);
-            }else if(it.isStrike()){
-                if(it.getRolls().size() == 1){
+        
+        if (isPerfectGame(frames)) {
+            for (Frame it : frames) {
+                if (it.getRolls().size() == 1) {
                     pinfalls = pinfalls + framePrinterService.printFrameWithStrike(it);
-                }else{
-                    pinfalls = pinfalls + framePrinterService.printLastFrameWithStrike(it);
+                } else {
+                    pinfalls = pinfalls + framePrinterService.printLastFramePerfectGame(it);
                 }
-            }else{
-                pinfalls = pinfalls + framePrinterService.printRegularFrame(it);
+            }
+            
+        }
+        else if(isFoulGame(frames)){
+            int counterFrames = 0;
+            for (Frame it : frames) {
+                if(frames.size() == counterFrames + 1){
+                    pinfalls = pinfalls + framePrinterService.printLastFrameFoulGame(it);
+                }else{
+                    pinfalls = pinfalls + framePrinterService.printRegularFrame(it);
+                }
+                counterFrames++;
+            }
+        }else {
+            for (Frame it : frames) {
+                if (it.isSpare()) {
+                    pinfalls = pinfalls + framePrinterService.printFrameWithSpare(it);
+                } else if (it.isStrike()) {
+                    if (it.getRolls().size() == 1) {
+                        pinfalls = pinfalls + framePrinterService.printFrameWithStrike(it);
+                    } else {
+                        pinfalls = pinfalls + framePrinterService.printLastFrameWithStrike(it);
+                    }
+                } else {
+                    pinfalls = pinfalls + framePrinterService.printRegularFrame(it);
+                }
             }
         }
+        
+        
+        
+        
         return pinfalls;
     }
     
@@ -74,6 +102,39 @@ public class GamePrinterServiceImp implements GamePrinterService{
             System.out.println("------------------------------------------------------------------------------------------------------------");
             System.out.println("");
         }
+    }
+    
+    
+    public boolean isPerfectGame(ArrayList<Frame> frames){
+        boolean isPerfectGame = true;
+        
+        for(Frame it: frames){
+            if(!it.isStrike() && isPerfectGame){
+                isPerfectGame = false;
+                break;
+            }
+        }
+        
+        return isPerfectGame;
+    }
+    
+    
+    public boolean isFoulGame(ArrayList<Frame> frames){
+        boolean isFoulGame = true;
+        
+        for (Frame it : frames) {
+            if (isFoulGame) {
+                for (Roll roll : it.getRolls()) {
+                    if (!roll.getCharValueScore().equalsIgnoreCase("f")) {
+                        isFoulGame = false;
+                        break;
+                    }
+                }
+            }
+
+        }
+        
+        return isFoulGame;
     }
     
 }

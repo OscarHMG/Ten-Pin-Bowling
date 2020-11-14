@@ -15,7 +15,6 @@ import com.oscarhmg.jobsity.ten_pin_bowling.services.FrameService;
 import com.oscarhmg.jobsity.ten_pin_bowling.services.GamePrinterService;
 import java.util.ArrayList;
 import java.util.Map;
-import javax.print.DocFlavor;
 
 /**
  *
@@ -43,15 +42,13 @@ public class Application {
         Game bowlingGame = new Game();
         //String path = args[0];
         
-        String path = "C:\\Users\\Usuario\\Desktop\\example1.txt";
+        //String path = "C:\\Users\\Usuario\\Desktop\\example1.txt";
+        String path = "C:\\Users\\Usuario\\Desktop\\resources\\Perfect-Game-Two-Players.txt";
         Map<String, ArrayList<Roll>> inputData = app.readerService.readerLine(path);
         bowlingGame.setPlayers(app.frameService.createPlayerFrames(inputData));
         
         
         app.gamePrinterService.printGame(bowlingGame);
-        //System.out.println(app.gamePrinterService.printHeaderFrames());    
-        //System.out.println(app.gamePrinterService.printFrames(bowlingGame.getPlayers().get(0).getFrames()));
-        //System.out.println(app.gamePrinterService.printScore(bowlingGame.getPlayers().get(0).getFrames()));
-        //app.gamePrinterService.printScore(bowlingGame.getPlayers().get(0).getFrames());
+        
     }
 }

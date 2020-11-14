@@ -64,4 +64,18 @@ public class FramePrinterServiceImp implements FramePrinterService{
                 + lastFrame.getScorePointsByRoll(2);
     }
     
+    
+    @Override
+    public String printLastFramePerfectGame(Frame lastFrame) {
+        return TenPinBowlingConstants.STRIKE + " " 
+                + TenPinBowlingConstants.STRIKE +" "
+                + TenPinBowlingConstants.STRIKE;
+    }
+
+    @Override
+    public String printLastFrameFoulGame(Frame lastFrame) {
+        return "F F F";
+        
+    }
+    
 }

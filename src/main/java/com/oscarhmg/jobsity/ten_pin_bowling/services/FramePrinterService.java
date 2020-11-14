@@ -18,4 +18,8 @@ public interface FramePrinterService {
     public String printFrameWithStrike(Frame strikeFrame);
     public String printFrameWithSpare(Frame spareFrame);
     public String printLastFrameWithStrike(Frame lastFrame);
+    
+    public String printLastFramePerfectGame(Frame lastFrame);
+    
+    public String printLastFrameFoulGame(Frame lastFrame);
 }

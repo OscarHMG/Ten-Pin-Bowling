@@ -19,7 +19,7 @@ public class Frame {
     
     private boolean spare;
     private boolean strike;
-
+    private boolean foul;
     
     public Frame(){
         this.rolls = new ArrayList<>();
@@ -71,6 +71,14 @@ public class Frame {
         }
     
         return result;
+    }
+
+    public boolean isFoul() {
+        return foul;
+    }
+
+    public void setFoul(boolean foul) {
+        this.foul = foul;
     }
     
     
