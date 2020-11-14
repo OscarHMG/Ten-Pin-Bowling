@@ -6,6 +6,8 @@
 package com.oscarhmg.jobsity.ten_pin_bowling.implementations;
 
 import com.oscarhmg.jobsity.ten_pin_bowling.models.Frame;
+import com.oscarhmg.jobsity.ten_pin_bowling.models.Game;
+import com.oscarhmg.jobsity.ten_pin_bowling.models.Player;
 import com.oscarhmg.jobsity.ten_pin_bowling.services.FramePrinterService;
 import com.oscarhmg.jobsity.ten_pin_bowling.services.GamePrinterService;
 import java.util.ArrayList;
@@ -59,6 +61,19 @@ public class GamePrinterServiceImp implements GamePrinterService{
             score = score + acum + "\t";
         }
         return score;
+    }
+
+    @Override
+    public void printGame(Game game) {
+        for(Player it : game.getPlayers()){
+            System.out.println(printHeaderFrames());
+            System.out.println("Player: " +it.getPlayerName());
+            System.out.println(printFrames(it.getFrames()));
+            System.out.println(printScore(it.getFrames()));
+            System.out.println("");
+            System.out.println("------------------------------------------------------------------------------------------------------------");
+            System.out.println("");
+        }
     }
     
 }

@@ -62,18 +62,17 @@ public class Frame {
     
     
     public String getScorePointsByRoll(int position){ 
-        /*String result = (this.getRolls().get(numRoll)) != null ? "" + (this.getRolls().get(numRoll).getPinsDown()) : "";
-        
-        return result;*/
         String result = "";
         try{
-            result = "" + this.getRolls().get(position).getPinsDown();
+            //result = "" + this.getRolls().get(position).getPinsDown();
+            result = "" + this.getRolls().get(position).getCharValueScore();
         }catch(IndexOutOfBoundsException ex){
             result = "";
         }
     
         return result;
     }
+    
     
     
     

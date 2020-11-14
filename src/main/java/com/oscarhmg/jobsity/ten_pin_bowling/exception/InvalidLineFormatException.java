@@ -11,9 +11,9 @@ import java.io.IOException;
  *
  * @author OscarHMG
  */
-public class FileReaderException extends IOException{
+public class InvalidLineFormatException extends Exception{
 
-    public FileReaderException(String message) {
+    public InvalidLineFormatException(String message) {
         super(message);
     }
     

@@ -11,11 +11,11 @@ package com.oscarhmg.jobsity.ten_pin_bowling.models;
  */
 public class Roll {
     private int pinsDown;
-    private String charValueScore;
+    private String stringPinsDownScore;
 
     public Roll() {
         this.pinsDown = 0;
-        this.charValueScore = "";
+        this.stringPinsDownScore = "";
     }
 
     
@@ -24,10 +24,12 @@ public class Roll {
      * @param charValueScore If F, then 0. Otherwise, the representation of the number.
      */
     public Roll(String charValueScore) {
-        if(charValueScore.equals("F")){
+        if(charValueScore.equalsIgnoreCase("F")){
             this.pinsDown = 0;
+            this.stringPinsDownScore = "F";
         }else{
             this.pinsDown = Integer.parseInt(charValueScore);
+            this.stringPinsDownScore = charValueScore;
         }
     }
     
@@ -44,11 +46,11 @@ public class Roll {
     }
 
     public String getCharValueScore() {
-        return charValueScore;
+        return stringPinsDownScore;
     }
 
     public void setCharValueScore(String charValueScore) {
-        this.charValueScore = charValueScore;
+        this.stringPinsDownScore = charValueScore;
     }
     
     

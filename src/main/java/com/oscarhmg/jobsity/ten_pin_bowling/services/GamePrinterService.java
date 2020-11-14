@@ -6,6 +6,7 @@
 package com.oscarhmg.jobsity.ten_pin_bowling.services;
 
 import com.oscarhmg.jobsity.ten_pin_bowling.models.Frame;
+import com.oscarhmg.jobsity.ten_pin_bowling.models.Game;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,8 @@ import java.util.ArrayList;
  * @author OscarHMG
  */
 public interface GamePrinterService {
+    
+    public void printGame(Game game);
     
     public String printHeaderFrames();
     

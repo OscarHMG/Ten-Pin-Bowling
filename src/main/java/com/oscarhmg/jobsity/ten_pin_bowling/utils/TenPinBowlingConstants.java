@@ -13,8 +13,9 @@ public final class TenPinBowlingConstants {
     public static final String STRIKE = "X";
     public static final String SPARE = "/";
     public static final int MAX_FRAMES = 10;
-    
-    
+    public static final int PINS_STRIKE = 10;
+    public static final int MAX_PINS_GAME = 10;
+    public static final String REGEX_EXPRESSION = "^[a-zA-Z]+?\\s[\\d+|fF]+$";
     private TenPinBowlingConstants(){
         
     }

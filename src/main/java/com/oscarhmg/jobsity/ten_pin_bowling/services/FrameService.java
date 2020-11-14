@@ -19,4 +19,6 @@ import java.util.Map;
 public interface FrameService {
     
     public ArrayList<Player> createPlayerFrames(Map<String, ArrayList<Roll>> rolls);
+    
+    public Frame createFrame(boolean strike, boolean spare, Roll R1 , Roll R2, Roll R3, int scoreR1, int scoreR2, int scoreR3);
 }

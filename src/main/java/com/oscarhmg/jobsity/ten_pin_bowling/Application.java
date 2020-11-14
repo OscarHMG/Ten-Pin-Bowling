@@ -37,7 +37,7 @@ public class Application {
     }
     
     
-    public static void main(String args[]){
+    public static void main(String args[]) throws Exception{
         //System.out.println("Hello World!");
         Application app = new Application();
         Game bowlingGame = new Game();
@@ -47,9 +47,11 @@ public class Application {
         Map<String, ArrayList<Roll>> inputData = app.readerService.readerLine(path);
         bowlingGame.setPlayers(app.frameService.createPlayerFrames(inputData));
         
-        System.out.println(app.gamePrinterService.printHeaderFrames());    
-        System.out.println(app.gamePrinterService.printFrames(bowlingGame.getPlayers().get(0).getFrames()));
-        System.out.println(app.gamePrinterService.printScore(bowlingGame.getPlayers().get(0).getFrames()));
+        
+        app.gamePrinterService.printGame(bowlingGame);
+        //System.out.println(app.gamePrinterService.printHeaderFrames());    
+        //System.out.println(app.gamePrinterService.printFrames(bowlingGame.getPlayers().get(0).getFrames()));
+        //System.out.println(app.gamePrinterService.printScore(bowlingGame.getPlayers().get(0).getFrames()));
         //app.gamePrinterService.printScore(bowlingGame.getPlayers().get(0).getFrames());
     }
 }
