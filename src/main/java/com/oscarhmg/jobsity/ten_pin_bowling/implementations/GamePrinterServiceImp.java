@@ -104,7 +104,7 @@ public class GamePrinterServiceImp implements GamePrinterService{
         }
     }
     
-    
+    @Override
     public boolean isPerfectGame(ArrayList<Frame> frames){
         boolean isPerfectGame = true;
         
@@ -118,7 +118,7 @@ public class GamePrinterServiceImp implements GamePrinterService{
         return isPerfectGame;
     }
     
-    
+    @Override
     public boolean isFoulGame(ArrayList<Frame> frames){
         boolean isFoulGame = true;
         

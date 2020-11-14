@@ -35,6 +35,11 @@ public class Frame {
         return rolls;
     }
 
+    public void setRolls(ArrayList<Roll> rolls) {
+        this.rolls = rolls;
+    }
+
+    
 
     public boolean isSpare() {
         return spare;

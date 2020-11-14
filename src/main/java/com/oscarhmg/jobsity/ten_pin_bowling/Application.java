@@ -37,17 +37,12 @@ public class Application {
     
     
     public static void main(String args[]) throws Exception{
-        //System.out.println("Hello World!");
         Application app = new Application();
         Game bowlingGame = new Game();
-        //String path = args[0];
-        
-        //String path = "C:\\Users\\Usuario\\Desktop\\example1.txt";
-        String path = "C:\\Users\\Usuario\\Desktop\\resources\\Perfect-Game-Two-Players.txt";
+        String path = args[0];
+
         Map<String, ArrayList<Roll>> inputData = app.readerService.readerLine(path);
         bowlingGame.setPlayers(app.frameService.createPlayerFrames(inputData));
-        
-        
         app.gamePrinterService.printGame(bowlingGame);
         
     }

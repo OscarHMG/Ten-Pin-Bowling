@@ -23,4 +23,8 @@ public interface GamePrinterService {
     
     public String printScore(ArrayList<Frame> frames);
     
+    public boolean isPerfectGame(ArrayList<Frame> frames);
+    
+    public boolean isFoulGame(ArrayList<Frame> frames);
+    
 }
