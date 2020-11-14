@@ -93,6 +93,10 @@ public class GamePrinterServiceImp implements GamePrinterService{
 
     @Override
     public void printGame(Game game) {
+        System.out.println("");
+        System.out.println("------------------------------------------------- CHALLENGE JOBSITY -------------------------------------------------");
+        System.out.println("");
+
         for(Player it : game.getPlayers()){
             System.out.println(printHeaderFrames());
             System.out.println("Player: " +it.getPlayerName());

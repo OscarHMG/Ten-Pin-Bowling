@@ -43,7 +43,7 @@ public class FileReaderServiceImp implements FileReaderService{
         Map<String, ArrayList<Roll>> playerRolls = null;
         try{
             playerRolls = new HashMap<>();
-            System.out.println("--- Reading the scores.. ---");
+            
             Stream<String> streamData = Files.lines(Paths.get(pathFile));
             
             for (String iterator : streamData.collect(Collectors.toList())) {

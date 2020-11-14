@@ -82,6 +82,18 @@ public class PerfectGameTest {
     
     
     
+    @Test
+    public void testNormalGame(){
+        Map<String, ArrayList<Roll>> inputData = readerService.readerLine(getAbsoluteTestFiles("Normal-Game.txt"));
+        bowlingGame.setPlayers(frameService.createPlayerFrames(inputData));
+        for(Player p : bowlingGame.getPlayers()){
+            Assert.assertEquals(true, !gamePrinterService.isFoulGame(p.getFrames()) && !gamePrinterService.isPerfectGame(p.getFrames()));
+        }
+    }
+    
+    
+    
+    
     public String getAbsoluteTestFiles(String fileName){
         ClassLoader classLoader = getClass().getClassLoader();
         return new File(classLoader.getResource(fileName).getFile()).getAbsolutePath();

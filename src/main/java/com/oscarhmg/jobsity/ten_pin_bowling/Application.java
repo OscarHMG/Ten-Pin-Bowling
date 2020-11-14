@@ -39,9 +39,8 @@ public class Application {
     public static void main(String args[]) throws Exception{
         Application app = new Application();
         Game bowlingGame = new Game();
-        String path = args[0];
 
-        Map<String, ArrayList<Roll>> inputData = app.readerService.readerLine(path);
+        Map<String, ArrayList<Roll>> inputData = app.readerService.readerLine(args[0]);
         bowlingGame.setPlayers(app.frameService.createPlayerFrames(inputData));
         app.gamePrinterService.printGame(bowlingGame);
         
